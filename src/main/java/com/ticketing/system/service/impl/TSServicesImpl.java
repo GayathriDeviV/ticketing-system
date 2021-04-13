@@ -186,7 +186,9 @@ public class TSServicesImpl implements TSServices {
 			String message = "You received a response from " + responseDetails.getUpdated_by() + " and the response is "
 					+ responseDetails.getResponse();
 			String subject = "Ticket ID: " + ticketId + " has been updated ";
-			mailSender.sendNotification(subject, message);
+			//Email id should be maintained and retrieved from DB .For testing purpose hardcoded To address.
+			String mailId="xxx@gmail.com";
+			mailSender.sendNotification(subject, message,mailId);
 			return data;
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);

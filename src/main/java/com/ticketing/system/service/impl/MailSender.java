@@ -19,17 +19,18 @@ public class MailSender {
 
 	private Logger logger = LoggerFactory.getLogger(MailSender.class);
 
-	public Mail buildMailParams(String subject, String msg) {
+	public Mail buildMailParams(String subject, String msg,String mailId) {
 		Email from = new Email("yogesh@sinecycle.com");
-		Email to = new Email("gayathri2462@gmail.com");
+	
+		Email to = new Email(mailId);
 		Content content = new Content("text/plain", msg);
 		Mail mail = new Mail(from, subject, to, content);
 
 		return mail;
 	}
 
-	public void sendNotification(String subject, String msg) throws IOException {
-		final Mail mailObject = buildMailParams(subject, msg);
+	public void sendNotification(String subject, String msg ,String mailId) throws IOException {
+		final Mail mailObject = buildMailParams(subject, msg, mailId);
 		send(mailObject);
 	}
 
